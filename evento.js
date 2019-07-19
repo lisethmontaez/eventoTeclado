@@ -18,10 +18,14 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo){
 	lienzo.closePath();
 } 
 
-function dibujarTeclado(evento){           
+ffunction dibujarTeclado(evento){           
 	var colorcito = "#BE3BF9";
 	var movimiento = 5;
-	
+	var arribaderecha = UP + RIGHT;
+	var arribaizquiera = UP + LEFT;
+	var abajoderecha = DOWN + RIGHT;
+	var abajoizquierda = DOWN + LEFT;
+
 	switch(evento.keyCode){
 
 		case teclas.DOWN:
@@ -39,8 +43,18 @@ function dibujarTeclado(evento){
 		case teclas.RIGHT:
 		dibujarLinea(colorcito, x, y, x + movimiento, y, papel);
 		x = x + movimiento;
+		case teclas.arribaderecha:
+		dibujarLinea(colorcito, x, y + movimiento, x + movimiento, y, papel);
+		break;
+		case teclas.arribaizquiera:
+		dibujarLinea(colorcito, x, y + movimiento, x - movimiento, y, papel);
+		break;
+		case teclas.abajoderecha:
+		dibujarLinea(colorcito, x, y - movimiento, x + movimiento, y, papel);
+		break;
+		case teclas.abajoizquierda:
+		dibujarLinea(colorcito, x, y - movimiento, x - movimiento, y, papel);
 		break;
 
 	}
-
 }
