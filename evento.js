@@ -14,7 +14,7 @@ var y = 100;
 var velx=0;
 var vely=0;
 var colorcito = "#BE3BF9";
-var movimiento = 5;
+var movimiento = 10;
 
 dibujarLinea("red", x-1, y-1 , x+1, y+1, papel);//Iniciar trazo en el centro
 function pulsado()
@@ -38,9 +38,10 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo){
 } 
 function pulsar(evento)
 {
+
 	if(evento.keyCode==teclas.UP)
 	{
-		vely=-5;
+		vely=-movimiento;
 		// yf-=movimiento;
 		pulsos[0]=true;
 	}
@@ -48,21 +49,21 @@ function pulsar(evento)
 	{
 		// dibujarLinea(colorcito, x, y, x, y + movimiento, papel);
 		// yf += movimiento;
-		vely=5;
+		vely=movimiento;
 		pulsos[0]=true;
 	}
 	if(evento.keyCode==teclas.LEFT)
 	{
 		// dibujarLinea(colorcito, x, y, x - movimiento, y, papel);
 		// xf -= movimiento;
-		velx=-5;
+		velx=-movimiento;
 		pulsos[0]=true;
 	}
 	if(evento.keyCode==teclas.RIGHT)
 	{
 		// dibujarLinea(colorcito, x, y, x + movimiento, y, papel);
 		// xf += movimiento;
-		velx=5;
+		velx=movimiento;
 		pulsos[0]=true;
 	}
 	// if(pulsos[0] && pulsos[1])
@@ -76,6 +77,7 @@ function pulsar(evento)
 	console.log("velx:" +velx);
 	console.log("vely:" +vely);
 	dibujarLinea(colorcito,x,y,x+velx,y+vely,papel);
+	// x = x + velx ;
 	x+=velx;
 	y+=vely;
 }
@@ -85,7 +87,7 @@ function soltar(evento)
 	console.log("Soltado: ");
 	if(evento.keyCode==teclas.UP)
 	{
-		vely+=5;
+		vely+=movimiento;
 		// yf-=movimiento;
 		pulsos[0]=false;
 		console.log("UP");
@@ -94,7 +96,7 @@ function soltar(evento)
 	{
 		// dibujarLinea(colorcito, x, y, x, y + movimiento, papel);
 		// yf += movimiento;
-		vely-=5;
+		vely-=movimiento;
 		pulsos[0]=false;
 		console.log("DOWN");
 	}
@@ -102,7 +104,7 @@ function soltar(evento)
 	{
 		// dibujarLinea(colorcito, x, y, x - movimiento, y, papel);
 		// xf -= movimiento;
-		velx+=5;
+		velx+=movimiento;
 		pulsos[0]=false;
 		console.log("LEFT");
 	}
@@ -110,7 +112,7 @@ function soltar(evento)
 	{
 		// dibujarLinea(colorcito, x, y, x + movimiento, y, papel);
 		// xf += movimiento;
-		velx-=5;
+		velx-=movimiento;
 		pulsos[0]=false;
 		console.log("RIGHT");
 	}
